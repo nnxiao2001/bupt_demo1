@@ -126,7 +126,7 @@ let routers = {
     "nodes": [
         {
             "id": 10450,
-            "label": "192.168.110.1",
+            "label": "192.2.1.2",
             "group": 'hosts1',
             shapeProperties: {
                 useBorderWithImage: false
@@ -136,7 +136,7 @@ let routers = {
         },
         {
             "id": 10451,
-            "label": "192.168.160.3",
+            "label": "192.2.2.4",
             "group": 'hosts1',
             shapeProperties: {
                 useBorderWithImage: false
@@ -146,7 +146,7 @@ let routers = {
         },
         {
             "id": 10452,
-            "label": "192.168.160.2",
+            "label": "192.2.3.2",
             "group": 'hosts1',
             shapeProperties: {
                 useBorderWithImage: false
@@ -156,7 +156,7 @@ let routers = {
         },
         {
             "id": 1000001,
-            "label": "192.168.120.0",
+            "label": "192.2.1.3",
             "group": 'hosts2',
             shapeProperties: {
                 useBorderWithImage: false
@@ -166,7 +166,7 @@ let routers = {
         },
         {
             "id": 1000002,
-            "label": "192.168.160.0",
+            "label": "192.2.2.3",
             "group": 'hosts2',
             shapeProperties: {
                 useBorderWithImage: false
@@ -176,7 +176,7 @@ let routers = {
         },
         {
             "id": 1000003,
-            "label": "10.112.0.0",
+            "label": "192.2.1.4",
             "group": 'hosts2',
             shapeProperties: {
                 useBorderWithImage: false
@@ -186,7 +186,7 @@ let routers = {
         },
         {
             "id": 1000004,
-            "label": "192.168.110.0",
+            "label": "192.2.1.5",
             "group": 'hosts2',
             shapeProperties: {
                 useBorderWithImage: false
@@ -196,7 +196,7 @@ let routers = {
         },
         {
             "id": 1000006,
-            "label": "192.168.130.0",
+            "label": "192.2.3.3",
             "group": 'hosts2',
             shapeProperties: {
                 useBorderWithImage: false
@@ -206,17 +206,17 @@ let routers = {
         },
         {
             "id": 2000000,
-            "label": "192.168.120.100",
+            "label": "192.168.101.11",
             "group": 'cameras'
         },
         {
             "id": 2000001,
-            "label": "10.112.1.0",
+            "label": "192.168.101.12",
             "group": 'cameras'
         },
         {
             "id": 2000002,
-            "label": "192.168.130.121",
+            "label": "192.168.103.11",
             "group": 'cameras'
         }
     ],
@@ -354,7 +354,7 @@ export default class index extends Component {
         let newNodes = [
             {
                 "id": 10450,
-                "label": "192.168.110.1",
+                "label": "192.2.1.2",
                 "group": 'hosts1',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -364,7 +364,7 @@ export default class index extends Component {
             },
             {
                 "id": 10451,
-                "label": "192.168.160.3",
+                "label": "192.2.2.4",
                 "group": 'hosts1',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -374,7 +374,7 @@ export default class index extends Component {
             },
             {
                 "id": 10452,
-                "label": "192.168.160.2",
+                "label": "192.2.3.2",
                 "group": 'hosts1',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -384,7 +384,7 @@ export default class index extends Component {
             },
             {
                 "id": 1000001,
-                "label": "192.168.120.0",
+                "label": "192.2.1.3",
                 "group": 'hosts2',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -394,7 +394,7 @@ export default class index extends Component {
             },
             {
                 "id": 1000002,
-                "label": "192.168.160.0",
+                "label": "192.2.2.3",
                 "group": 'hosts2',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -404,7 +404,7 @@ export default class index extends Component {
             },
             {
                 "id": 1000003,
-                "label": "10.112.0.0",
+                "label": "192.2.1.4",
                 "group": 'hosts2',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -414,7 +414,7 @@ export default class index extends Component {
             },
             {
                 "id": 1000004,
-                "label": "192.168.110.0",
+                "label": "192.2.1.5",
                 "group": 'hosts2',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -424,7 +424,7 @@ export default class index extends Component {
             },
             {
                 "id": 1000006,
-                "label": "192.168.130.0",
+                "label": "192.2.3.3",
                 "group": 'hosts2',
                 shapeProperties: {
                     useBorderWithImage: false
@@ -434,17 +434,17 @@ export default class index extends Component {
             },
             {
                 "id": 2000000,
-                "label": "192.168.120.100",
+                "label": "192.168.101.11",
                 "group": 'cameras'
             },
             {
                 "id": 2000001,
-                "label": "10.112.1.0",
+                "label": "192.168.101.12",
                 "group": 'cameras'
             },
             {
                 "id": 2000002,
-                "label": "192.168.130.121",
+                "label": "192.168.103.11",
                 "group": 'cameras'
             }
         ]

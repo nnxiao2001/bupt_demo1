@@ -5,6 +5,8 @@ import type { ColumnsType } from 'antd/es/table';
 import type { MenuProps } from 'antd';
 import React from 'react';
 import RouterGraph from './Component/RouterGraph';
+import internal from 'stream';
+import { randomBytes } from 'crypto';
 
 const { Header, Content } = Layout;
 
@@ -17,7 +19,11 @@ const pictureData = [
 interface ResourceDataType {
   key: React.Key;
   ID: string;
-  value: string;
+  value_n: number;
+  value_s: number;
+  cpu:number;
+  gpu:number;
+  value_o:number;
   queue: string;
 }
 
@@ -35,16 +41,40 @@ interface WorkDataType {
 
 const compColumns: ColumnsType<ResourceDataType> = [
   {
-    title: '节点ID',
+    title: 'IPv4',
     width: 100,
     dataIndex: 'ID',
     key: 'ID',
   },
   {
-    title: '算力资源',
+    title: '网络能力',
     width: 100,
-    dataIndex: 'value',
-    key: 'value',
+    dataIndex: 'value_n',
+    key: 'value_n',
+  },
+  {
+    title: '存储能力',
+    width: 100,
+    dataIndex: 'value_s',
+    key: 'value_s',
+  },
+  {
+    title: 'CPU',
+    width: 100,
+    dataIndex: 'cpu',
+    key: 'cpu',
+  },
+  {
+    title: 'GPU',
+    width: 100,
+    dataIndex: 'gpu',
+    key: 'gpu',
+  },
+  {
+    title: '综合能力',
+    width: 100,
+    dataIndex: 'value_o',
+    key: 'value_o',
   },
   {
     title: '任务队列',
@@ -54,26 +84,6 @@ const compColumns: ColumnsType<ResourceDataType> = [
   },
 ];
 
-const netColumns: ColumnsType<ResourceDataType> = [
-  {
-    title: '节点ID',
-    width: 100,
-    dataIndex: 'ID',
-    key: 'ID',
-  },
-  {
-    title: '网络资源',
-    width: 100,
-    dataIndex: 'value',
-    key: 'value',
-  },
-  {
-    title: '任务队列',
-    dataIndex: 'queue',
-    key: 'queue',
-    width: 200,
-  },
-];
 const workColumns: ColumnsType<WorkDataType> = [
   {
     title: '任务队列ID',
@@ -121,25 +131,90 @@ const workColumns: ColumnsType<WorkDataType> = [
 
 
 const compData: ResourceDataType[] = [];
-const netData: ResourceDataType[] = [];
+// const netData: ResourceDataType[] = [];
 const workData: WorkDataType[] = [];
-for (let i = 0; i < 15; i++) {
   compData.push({
-    key: i,
-    ID: `Computing point ${i}`,
-    value: '400',
-    queue: `53475876`,
+    key: 0,
+    ID: `192.2.1.2`,
+    value_n:1.32,
+    value_s:5.75,
+    cpu:2.79,
+    gpu:1.80,
+    value_o:11.66,
+    queue: ' ',
+  },
+  {
+    key: 1,
+    ID: `192.2.1.3`,
+    value_n:0.88,
+    value_s:0.19,
+    cpu:1.16,
+    gpu:0.00,
+    value_o:2.23,
+    queue: ' ',
+  },
+  {
+    key: 2,
+    ID: `192.2.1.4`,
+    value_n:1.15,
+    value_s:0.15,
+    cpu:1.13,
+    gpu:0.00,
+    value_o:2.43,
+    queue: ' ',
+  },
+  {
+    key: 3,
+    ID: `192.2.1.5`,
+    value_n:1.92,
+    value_s:4.04,
+    cpu:1.87,
+    gpu:3.99,
+    value_o:11.82,
+    queue: ' ',
+  },
+  {
+    key: 4,
+    ID: `192.2.2.3`,
+    value_n:1.01,
+    value_s:4.44,
+    cpu:1.74,
+    gpu:2.24,
+    value_o:9.43,
+    queue: ' ',
+  },
+  {
+    key: 5,
+    ID: `192.2.2.4`,
+    value_n:1.52,
+    value_s:2.05,
+    cpu:3.40,
+    gpu:3.07,
+    value_o:10.04,
+    queue: ' ',
+  },
+  {
+    key: 6,
+    ID: `192.2.3.2`,
+    value_n:1.13,
+    value_s:4.16,
+    cpu:3.22,
+    gpu:2.40,
+    value_o:10.91,
+    queue: ' ',
+  },
+  {
+    key: 7,
+    ID: `192.2.3.3`,
+    value_n:1.31,
+    value_s:0.79,
+    cpu:1.43,
+    gpu:0.49,
+    value_o:4.02,
+    queue: ' ',
   });
-}
-for (let i = 0; i < 10; i++) {
-  netData.push({
-    key: i,
-    ID: `Network point ${i}`,
-    value: '500',
-    queue: '65485967898',
-  });
-}
-for (let i = 0; i < 60; i++) {
+
+for (let i = 0; i < 3; i++) {
   workData.push({
     key: i,
     ID: `1-234321-2`, //temporary
@@ -160,16 +235,34 @@ const items1: MenuProps['items'] = ['协同调度'].map(
   })
 );
 
-
 const App: React.FC = () => {
-  let [on, setOn] = React.useState(false);
+  const [on, setOn] = React.useState(false);
+  const [taskListData, setTaskListData] = React.useState<WorkDataType[]>(workData);
 
   const lightOn = () => {
     setOn(true);
+    // Update the state to change the text in the last column for the first three rows
+    setTaskListData((prevData) =>
+      prevData.map((item, index) => {
+        if (index < 3) {
+          return { ...item, state: '处理中' };
+        }
+        return item;
+      })
+    );
   };
 
   const lightOff = () => {
     setOn(false);
+    // Restore the text in the last column for the first three rows to '待处理'
+    setTaskListData((prevData) =>
+      prevData.map((item, index) => {
+        if (index < 3) {
+          return { ...item, state: '待处理' };
+        }
+        return item;
+      })
+    );
   };
 
   const pictureColumns = [
@@ -194,7 +287,7 @@ const App: React.FC = () => {
               开始调度
             </Button>
             <Button type="primary" onClick={lightOff}>
-              暂停调度
+              结束调度
             </Button>
           </Flex>
         </Flex>
@@ -215,21 +308,20 @@ const App: React.FC = () => {
             <Row gutter={24}>
               <Col span={24}>
                 <Table
-                    columns={compColumns}
-                    dataSource={compData}
-                    bordered
-                    title={() => '计算资源表'}
-                    scroll={{ y: 277 }}
+                  columns={compColumns}
+                  dataSource={compData}
+                  bordered
+                  title={() => '计算资源表'}
+                  scroll={{ y: 277 }}
                 />
               </Col>
               <Col span={24}>
                 <Table
-              
                   columns={workColumns}
-                  dataSource={workData}
+                  dataSource={taskListData}
                   bordered
                   title={() => '任务列表'}
-                  scroll={{ y: 225}}
+                  scroll={{ y: 225 }}
                 />
               </Col>
             </Row>
@@ -239,8 +331,5 @@ const App: React.FC = () => {
     </Layout>
   );
 };
-
-
-
 
 export default App;
