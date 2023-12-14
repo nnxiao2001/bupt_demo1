@@ -31,15 +31,15 @@ let options = {
     groups: {
         useDefaultGroups: true,
         hosts1: {
-            image: '/host1.png',
+            image: process.env.PUBLIC_URL+ '/host1.png',
             size: 25
         },
         hosts2: {
-            image: '/host2.png',
+            image: process.env.PUBLIC_URL+ '/host2.png',
             size: 25
         },
         cameras: {
-            image: '/camera.png',
+            image: process.env.PUBLIC_URL+ '/camera.png',
             size: 20
         }
     },
@@ -315,8 +315,8 @@ const style = {
     },
 }
 
-const videos = ['/打螺丝1.mp4', '/打螺丝2越界.mp4', '打螺丝2正常.mp4']
-const results = ['/打螺丝1.mp4', '/打螺丝2越界.mp4', '打螺丝2正常.mp4']
+const videos = [process.env.PUBLIC_URL+ '/打螺丝1.mp4', process.env.PUBLIC_URL+ '/打螺丝2越界.mp4', '打螺丝2正常.mp4']
+const results = [process.env.PUBLIC_URL+ '/打螺丝1.mp4', process.env.PUBLIC_URL+ '/打螺丝2越界.mp4', '打螺丝2正常.mp4']
 
 export default class index extends Component {
     //react自己的数据结构，定义动态变量

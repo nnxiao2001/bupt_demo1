@@ -12,7 +12,7 @@ const { Header, Content } = Layout;
 
 const pictureData = [
   {
-    src: '/SDN架构图.png',
+    src: process.env.PUBLIC_URL+ '/SDN架构图.png',
   },
 ]
 
@@ -311,6 +311,7 @@ const App: React.FC = () => {
                   columns={compColumns}
                   dataSource={compData}
                   bordered
+                  size={"small"}
                   title={() => '计算资源表'}
                   scroll={{ y: 277 }}
                 />
@@ -320,6 +321,7 @@ const App: React.FC = () => {
                   columns={workColumns}
                   dataSource={taskListData}
                   bordered
+                  size={"small"}
                   title={() => '任务列表'}
                   scroll={{ y: 225 }}
                 />
