@@ -5,7 +5,7 @@ const VideoModal = ({ videoUrl, visible, onClose }) => {
   //console.log(videoUrl)
   return (
     <Modal
-      title="处理情况展示"
+      title=" "
       open={visible}
       onCancel={onClose}
       footer={null}
