@@ -316,7 +316,7 @@ const style = {
 }
 
 const videos = [process.env.PUBLIC_URL+ '/打螺丝1.mp4', process.env.PUBLIC_URL+ '/打螺丝2越界.mp4', '打螺丝2正常.mp4']
-const results = [process.env.PUBLIC_URL+ '/打螺丝1.mp4', process.env.PUBLIC_URL+ '/打螺丝2越界.mp4', '打螺丝2正常.mp4']
+const results = [process.env.PUBLIC_URL+ '/1.mp4', process.env.PUBLIC_URL+ '/2.mp4', '3.mp4']
 
 export default class index extends Component {
     //react自己的数据结构，定义动态变量
